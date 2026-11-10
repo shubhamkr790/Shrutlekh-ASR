@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Shrutlekh">
+  <rect width="128" height="128" rx="30" fill="#17203D"/>
+  <g fill="#FAF7F0">
+    <rect x="22" y="52" width="9" height="24" rx="4.5"/>
+    <rect x="36" y="36" width="9" height="56" rx="4.5"/>
+    <rect x="50" y="46" width="9" height="36" rx="4.5"/>
+  </g>
+  <g stroke-linecap="round" stroke-width="9" fill="none">
+    <path d="M72 44H105" stroke="#FAF7F0"/>
+    <path d="M72 64H80" stroke="#FAF7F0"/>
+    <path d="M91 64H105" stroke="#F2A20C"/>
+    <path d="M72 84H97" stroke="#FAF7F0"/>
+  </g>
+</svg>

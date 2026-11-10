@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shrutlekh</title>
+  <link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">
+      <img src="/assets/logo-mark.svg" alt="" width="34" height="34">
+      <span class="name">Shrutlekh</span>
+      <span class="deva" lang="hi">श्रुतलेख</span>
+    </a>
+    <p class="tagline">Speech to text that tells you which words to double-check.</p>
+    <span id="health" class="health" title="Backend status">connecting…</span>
+  </header>
+
+  <main class="layout">
+    <!-- ============ LEFT: input ============ -->
+    <aside class="panel input">
+      <section>
+        <h2><span class="step">1</span> Choose audio</h2>
+        <label id="drop" class="drop" tabindex="0">
+          <input id="file" type="file" accept="audio/*,video/mp4,.webm,.opus,.m4a" hidden>
+          <strong>Drop an audio file</strong>
+          <span>or click to browse · wav, mp3, m4a, ogg, webm · up to 50 MB</span>
+        </label>
+        <div class="row">
+          <button id="rec" class="btn ghost" type="button"><span class="dot"></span><span id="recLabel">Record from mic</span></button>
+          <span id="recTime" class="muted mono"></span>
+        </div>
+        <div id="picked" class="picked" hidden></div>
+
+        <h3>Or try a sample clip</h3>
+        <ul id="samples" class="samples"><li class="muted">loading…</li></ul>
+      </section>
+
+      <section>
+        <h2><span class="step">2</span> Options</h2>
+        <div class="grid2">
+          <label>Model
+            <select id="model">
+              <option value="tiny">tiny · fastest</option>
+              <option value="base" selected>base · balanced</option>
+              <option value="small">small · most accurate</option>
+            </select>
+          </label>
+          <label>Language
+            <select id="language">
+              <option value="auto" selected>Auto-detect</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </label>
+        </div>
+        <details class="adv">
+          <summary>Confidence thresholds</summary>
+          <label>Sure above <output id="highOut">80%</output>
+            <input id="high" type="range" min="0.5" max="0.99" step="0.01" value="0.80">
+          </label>
+          <label>Likely wrong below <output id="lowOut">50%</output>
+            <input id="low" type="range" min="0.05" max="0.8" step="0.01" value="0.50">
+          </label>
+        </details>
+        <button id="go" class="btn primary wide" type="button" disabled>Transcribe</button>
+        <p id="status" class="status" role="status"></p>
+      </section>
+    </aside>
+
+    <!-- ============ RIGHT: result ============ -->
+    <section class="panel result">
+      <div id="empty" class="empty">
+        <img src="/assets/logo-mark.svg" alt="" width="56" height="56">
+        <h2>Nothing transcribed yet</h2>
+        <p>Pick a sample on the left and press <b>Transcribe</b>. Words the model was unsure about will be
+          <mark class="w medium">marked</mark>, and words that are probably wrong will be <mark class="w low">underlined</mark>.
+          Click any word to hear it again, double-click to fix it.</p>
+      </div>
+
+      <div id="out" hidden>
+        <div class="stats" id="stats"></div>
+        <div id="evaluation" class="evaluation" hidden></div>
+
+        <div class="player">
+          <button id="play" class="btn round" type="button" aria-label="Play">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path id="playIcon" d="M7 5v14l12-7z" fill="currentColor"/></svg>
+          </button>
+          <div class="wave">
+            <canvas id="wave" height="64"></canvas>
+            <div id="cursor" class="cursor"></div>
+          </div>
+          <span id="clock" class="mono muted">0:00</span>
+          <audio id="audio" preload="auto"></audio>
+        </div>
+        <p class="legend">
+          <span><i class="sw medium"></i>check</span><span><i class="sw low"></i>likely wrong</span>
+          <span><i class="sw edited"></i>corrected by you</span>
+          <span class="keys">Keys: <kbd>Space</kbd> play · <kbd>N</kbd> next flagged · <kbd>P</kbd> previous</span>
+        </p>
+
+        <div class="tools">
+          <div class="seg">
+            <button id="prevFlag" class="btn ghost" type="button">← Previous flagged</button>
+            <button id="nextFlag" class="btn ghost" type="button">Next flagged →</button>
+          </div>
+          <label class="toggle"><input id="onlyFlagged" type="checkbox"> Show only segments with flags</label>
+        </div>
+
+        <article id="transcript" class="transcript" lang="und"></article>
+
+        <div class="exports">
+          <span class="muted">Download</span>
+          <button class="btn ghost" data-fmt="txt" type="button">TXT</button>
+          <button class="btn ghost" data-fmt="srt" type="button">SRT</button>
+          <button class="btn ghost" data-fmt="vtt" type="button">VTT</button>
+          <button class="btn ghost" data-fmt="json" type="button">JSON</button>
+          <button class="btn ghost" data-fmt="md" type="button">Review report</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">Shrutlekh · Whisper (faster-whisper) running locally on your machine · nothing is uploaded anywhere else</footer>
+  <script src="app.js"></script>
+</body>
+</html>
