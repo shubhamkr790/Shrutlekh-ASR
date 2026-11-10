@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shrutlekh"
+version = "1.0.0"
+description = "Confidence-aware speech-to-text: Whisper transcripts that show which words to double-check"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Shubham Kumar" }]
+dependencies = [
+  "faster-whisper>=1.0",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+  "python-multipart>=0.0.9",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+shrutlekh = "shrutlekh.cli:main"
+
+[tool.setuptools]
+packages = ["shrutlekh"]
+
+[tool.setuptools.package-data]
+shrutlekh = ["web/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: runs the real Whisper model (downloads ~75 MB on first run)"]
+addopts = "-m 'not slow'"
