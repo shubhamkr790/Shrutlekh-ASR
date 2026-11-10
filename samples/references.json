@@ -1,0 +1,69 @@
+{
+  "note": "Synthetic clips made with the Windows speech voices (scripts/make_samples.ps1). The text field is the exact reference used for WER.",
+  "clips": [
+    {
+      "file": "01_fox.wav",
+      "voice": "Microsoft Zira Desktop",
+      "rate": 0,
+      "title": "Everyday sentence",
+      "text": "The quick brown fox jumps over the lazy dog while the farmer watches from the old wooden gate."
+    },
+    {
+      "file": "02_asr.wav",
+      "voice": "Microsoft David Desktop",
+      "rate": 0,
+      "title": "About speech recognition",
+      "text": "Speech recognition turns spoken words into written text, and it is used in phones, cars and smart speakers."
+    },
+    {
+      "file": "03_meeting.wav",
+      "voice": "Microsoft Hazel Desktop",
+      "rate": 0,
+      "title": "Office request (British voice)",
+      "text": "Please schedule the meeting for Thursday afternoon and send the agenda to everyone on the team."
+    },
+    {
+      "file": "04_medicine.wav",
+      "voice": "Microsoft Zira Desktop",
+      "rate": 0,
+      "title": "Medical term",
+      "text": "The doctor prescribed amoxicillin twice a day and asked the patient to return after one week."
+    },
+    {
+      "file": "05_bengaluru.wav",
+      "voice": "Microsoft David Desktop",
+      "rate": 0,
+      "title": "Indian place name",
+      "text": "Our train to Bengaluru was delayed because of heavy rain near the station."
+    },
+    {
+      "file": "06_seashells.wav",
+      "voice": "Microsoft Hazel Desktop",
+      "rate": 2,
+      "title": "Fast tongue twister",
+      "text": "She sells seashells by the seashore, and the shells she sells are surely seashells."
+    },
+    {
+      "file": "07_backup.wav",
+      "voice": "Microsoft David Desktop",
+      "rate": 1,
+      "title": "Technical instruction",
+      "text": "Remember to back up your files before installing the new operating system update."
+    },
+    {
+      "file": "08_hyderabad.wav",
+      "voice": "Microsoft Zira Desktop",
+      "rate": 0,
+      "title": "Names and history",
+      "text": "The museum in Hyderabad displays ancient coins, paintings and manuscripts from many dynasties."
+    },
+    {
+      "file": "09_noisy_mix.wav",
+      "voice": "mixed",
+      "rate": 0,
+      "title": "Noisy mix: 4 sentences, 5 dB noise",
+      "text": "Our train to Bengaluru was delayed because of heavy rain near the station. The doctor prescribed amoxicillin twice a day and asked the patient to return after one week. The museum in Hyderabad displays ancient coins, paintings and manuscripts from many dynasties. She sells seashells by the seashore, and the shells she sells are surely seashells.",
+      "generated": true
+    }
+  ]
+}
